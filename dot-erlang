@@ -1,0 +1,10 @@
+code:add_pathz("/Users/seth/Dropbox/SideProj/miscerl/ebin").
+code:add_pathz("/Users/seth/src/distel/ebin").
+code:add_pathz("/Users/seth/src/ibrowse/ebin").
+code:add_pathz("/Users/seth/src/lhttpc/ebin").
+code:add_pathz("/Users/seth/src/elib/ebin").
+code:add_pathz("/Users/seth/src/erlydtl-read-only/ebin").
+%% -- 
+code:add_pathz("/Users/seth/src/webmachine/ebin").
+code:add_pathz("/Users/seth/src/webmachine/deps/mochiweb/ebin").
+

@@ -1,0 +1,9 @@
+for RPROG in R-2.10 R-2.11 R-devel; do
+   complete -F _R -o filenames ${RPROG}
+done
+
+source $HOME/src/git-MASTER/contrib/completion/git-completion.bash
+
+### Local variables:
+### mode: shell-script
+### End:

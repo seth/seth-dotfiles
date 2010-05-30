@@ -1,0 +1,63 @@
+# Save this as ".autotest" in root_folder of computer or project
+
+# These require growlnotify, but once you have that you can tweak priorities
+# in the Growl control panel to get RedGreen in the growl bubble itself!
+# http://growl.info/documentation/growlnotify.php
+
+#Taken straight from the example in Autotest gem
+
+module AutoGrowl
+  def self.growl title, msg, img='', pri=0, stick=""
+    system "growlnotify -n autotest -p #{pri} -m #{msg.inspect} #{title} #{stick}"
+  end
+
+  Autotest.add_hook :red do |at|
+    growl "Tests Failed", "#{at.files_to_test.size} tests failed", '~/Library/autotest/rails_fail.png', 2
+  end
+
+  Autotest.add_hook :green do |at|
+    growl "Tests Passed", "All tests passed", '~/Library/autotest/rails_ok.png', -2 if at.tainted
+  end
+
+  Autotest.add_hook :all do |at|_hook
+    growl "autotest", "Tests have fully passed", '~/Library/autotest/rails_ok.png', -1 unless $TESTING
+  end
+end
+
+class Autotest
+
+# All code borrowed from:
+# http://www.robsanheim.com/2006/08/07/hacking-green-bar-color-output-into-autotest/
+
+  BAR = "=" * 80
+
+  # filter output for colorized green/red bar
+  def filter_output(results)
+    filtered = ""
+    results.each do |line|
+
+      if line =~ /\d+ tests, \d+ assertions, 0 failures, 0 errors/
+        line = "\e[32m#{BAR}\n#{$&}\e[0m\n\n"
+      elsif line =~ /\d+ tests, \d+ assertions, (\d+) failures, (\d+) errors/
+        if $1 != 0 || $2 != 0
+          line =  "\e[31m#{BAR}\n#{$&}\e[0m\n\n"
+        end
+      end
+      filtered <<line
+    end
+    filtered
+  end
+
+  def run_tests
+    find_files_to_test # failed + changed/affected
+    cmd = make_test_cmd @files_to_test
+  
+    puts cmd
+  
+    @results = `#{cmd}`
+    hook :ran_command
+    puts filter_output(@results)
+  
+    handle_results(@results)
+  end
+end

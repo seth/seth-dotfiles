@@ -1,0 +1,26 @@
+options(repos="http://cran.fhcrc.org")
+options(pkgType="source")
+options(browser="open")
+
+dir.create(Sys.getenv("R_LIBS_USER"), recursive = TRUE, showWarnings = FALSE)
+
+if (TRUE && interactive()) {
+tryCatch({
+    source("http://bioconductor.org/biocLite.R")
+}, error=function(e) invisible(NULL),
+         warning=function(w) message("Not connected to the net"))
+}
+
+## announce R version
+if (interactive()) {
+    .Rver <- R.Version()
+    message("R-", paste(.Rver$major, .Rver$minor, sep="."), "\n")
+}
+
+
+reload_pkg <- function(p)
+{
+    detach(paste("package", p, sep = ":"), unload = TRUE,
+           character.only = TRUE)
+    library(p, character.only = TRUE)
+}

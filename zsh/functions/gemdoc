@@ -1,0 +1,3 @@
+gemdoc() {
+  open $GEMDIR/doc/`$(which ls) $GEMDIR/doc | grep $1 | sort | tail -1`/rdoc/index.html
+}

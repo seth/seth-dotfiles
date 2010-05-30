@@ -1,0 +1,6 @@
+#compdef gemdoc
+
+_gemdoc() {
+  _gems=($(ls ${GEMDIR}/doc))
+  compadd "$@" -k _gems
+}

@@ -1,0 +1,6 @@
+[ui]
+username = Seth Falcon <seth@userprimary.net>
+#merge = emacs-merge
+
+[extensions]
+hgext.mq=

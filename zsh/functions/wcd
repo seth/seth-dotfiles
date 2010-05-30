@@ -1,0 +1,1 @@
+wcd()   { filepath=$(which ${1}) && cd $(dirname ${filepath}) }

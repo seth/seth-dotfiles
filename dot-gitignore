@@ -1,0 +1,5 @@
+.DS_Store
+*~
++KEEP
+*.elc
+/zsh/history

@@ -1,0 +1,3 @@
+mdiff() {
+  diff -u $@ | ${EDITOR}
+}

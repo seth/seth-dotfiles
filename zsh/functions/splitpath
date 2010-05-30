@@ -1,0 +1,1 @@
+splitpath() { echo ${1} |tr : '\n' }

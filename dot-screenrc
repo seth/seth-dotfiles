@@ -1,0 +1,56 @@
+startup_message off
+defscrollback 32768
+msgwait 1
+# no flow control, e.g. ^S and ^Q
+defflow off
+
+# don't tell me when bells happen in other windows
+vbell off
+bell_msg ""
+
+# don't pause for each screen message
+msgminwait 0
+
+# execute .bash_profile on startup
+shell -$SHELL
+
+escape ^Zz
+
+#bindkey -d -k kb stuff "\010"
+
+# make search case-insensitive
+ignorecase on
+
+shelltitle '@|'
+hardstatus alwayslastline '%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<'
+
+# Last line is status: green hostname, window list in cyan, and time and date right aligned:
+# hardstatus alwayslastline "%{=b}%{G}%H: %{C}%w %=%{G}%D, %m/%d %C%a"
+
+# ------------------------------------------------------------------------------
+# Set some Copy Mode key bindings
+# ------------------------------------------------------------------------------
+
+# emacs keybindings for navigation in copy mode
+markkeys ^B=Y:^F=V:h=^B:l=^F:0=^A:$=^E
+
+# C-g and other keys quit copy mode. Esc does nothing.
+# Only C-g, Esc, and C-space break out of i-search. So, use Esc because
+# it doesn't break out of copy mode and keeps the cursor position.
+markkeys \033=\015=^G=^D=h=j=k=l=H=M=L=G=g=y=c=v=a=x=b=e=B=E=w
+markkeys @=\033
+
+# special hack for C-e, since it should go *past* the last char.
+# (-m means this is for copy mode only.)
+bindkey -m ^e stuff "\$^f"
+
+# page up and page down
+bindkey -m -k kP stuff Y
+bindkey -m -k kN stuff V
+
+# C-space sets mark. 
+markkeys ' '=^@
+
+
+##   Initial Windows   ##
+screen 0

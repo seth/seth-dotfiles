@@ -1,0 +1,1 @@
+wcat()  { cat $(which $1) }

@@ -1,0 +1,27 @@
+[core]
+	logAllRefUpdates = true
+#	excludesfile = ~/.gitignore
+
+[user]
+	email = seth@userprimary.net
+	name  = Seth Falcon
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+[alias]
+        llog = log --date=local
+        local = log git-svn..
+
+[sendemail]
+        identity = userp
+        [sendemail "userp"]
+            smtpserver = smtp.gmail.com
+            smtpserverport = 465
+            smtpuser = seth@userprimary.net
+            smtpencryption = ssl
+[gui]
+	fontui = -family Monaco -size 16 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Monaco -size 16 -weight normal -slant roman -underline 0 -overstrike 0
