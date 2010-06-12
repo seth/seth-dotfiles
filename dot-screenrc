@@ -51,6 +51,3 @@ bindkey -m -k kN stuff V
 # C-space sets mark. 
 markkeys ' '=^@
 
-
-##   Initial Windows   ##
-screen 0

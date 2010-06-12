@@ -10,13 +10,16 @@ export PATH=${JAVA_HOME}/bin:${PATH}
 # don't let tar, etc copy Finder specific junk.
 export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
 
-PATH=~/util/bin:$EMACS_BIN:/usr/local/bin:$PATH
+PATH=~/util/bin:$EMACS_BIN:/usr/local/bin:/usr/local/sbin:$PATH
 PATH=~/util/python/bin:$PATH
 export PATH
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
-##source $HOME/src/git-MASTER/contrib/completion/git-completion.bash
+
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  source "$HOME/.rvm/scripts/rvm"
+fi
 
 [ -f ~/.bashrc ] && . ~/.bashrc

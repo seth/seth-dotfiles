@@ -1,6 +1,7 @@
 [[ -z $DISPLAY ]] && export DISPLAY=":0.0"
 [ "$EMACS" == "t" ] || alias ls="gls -F --color"
 alias ll="gls -Flh --color"
+alias la="gls -Falh --color"
 alias svn-diffB='svn diff --diff-cmd /usr/bin/diff -x "-ubBw"'
 alias em='/usr/bin/emacs -nw -q'
 alias ri="ri -f ansi -T"
@@ -11,13 +12,14 @@ alias emc="emacsclient -n"
 alias erlman="erl -man"
 alias L="less"
 alias G="grep"
+alias gst="git status"
 
 case $TERM in
     xterm)
         PS1="\[\033]0;\u@\h: \w\007\]\W\\$ "
         ;;
     xterm-color)
-        PS1='\h \W$(__git_ps1 " (%s)")\\$ '
+        PS1='\h: \W$(__git_ps1 " (%s)")\\$ '
         ;;
 esac
 
