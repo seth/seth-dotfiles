@@ -1,7 +1,7 @@
 alias cd..='cd ..'
 alias sourcerc='. ~/.zshrc'
 alias grep="grep -E --color=auto"
-[[ "$EMACS" == "t" ]] && alias ls='ls -F' || alias ls='ls -F'
+[[ "$EMACS" == "t" ]] && alias ls='/bin/ls -F' || alias ls='/usr/local/bin/gls -F --color'
 alias ll='ls -l'
 alias lld='ll --directory'
 alias llt='ll -r --sort=time'
@@ -16,10 +16,9 @@ alias -g GV="|grep -v"
 alias -g AO='2>&1'
 alias -g DN='2>/dev/null'
 alias -g  X='|xargs'
-alias -g E='emacs --no-windows'
+alias -g E='emacsclient -n'
 alias -g DBR='diff --brief -r'
 alias -g DR='diff -r'
-alias pg='pg_ctl -D ~/pgdata -l ~/pgdata/psql.log'
 alias ec='emacsclient'
 alias ecn='emacsclient -n'
 alias erlman='erl -man'
@@ -34,7 +33,7 @@ alias mg="mg -n" # no backup files
 alias rdci="R-devel CMD INSTALL"
 alias r2ci="R-2.10 CMD INSTALL"
 
-alias gls='git log git-svn..'
+alias gls='git log opscode/master..'
 alias gsr='git svn rebase'
 alias gst='git status'
 alias gc='git commit -v'
