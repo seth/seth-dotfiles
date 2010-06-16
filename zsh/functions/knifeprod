@@ -1,0 +1,4 @@
+knifeprod() {
+  echo "opsmaster's kitchen:"
+  knife "$@" -c ~/opscode/environments/prod/.chef/knife.rb
+}
