@@ -1,15 +1,36 @@
 #!/usr/bin/env ruby
 
-Dir.glob("dot-*").each do |f|
-  nf = f.sub(/^dot-/, ".")
-  af = File.expand_path(f)
-  puts "ln -nsf #{af} #{nf}"
+require 'fileutils'
+
+class DotFiler
+  def initialize
+    @dot_file_dir = File.dirname(__FILE__)
+    @backup_dir = ENV['HOME'] + "/dot-file-backups"
+  end
+
+  def backup(dot_file)
+    if !File.exist?(@backup_dir)
+      FileUtils.mkdir_p(@backup_dir)
+    end
+    FileUtils.cp_r(dot_file, @backup_dir)
+  end
+
+  def link_dots
+    Dir.chdir(ENV['HOME']) do
+      Dir.glob("#{@dot_file_dir}/dot-*").each do |f|
+        nf = File.basename(f).sub(/^dot-/, ".")
+        af = File.expand_path(f)
+        if !File.symlink?(nf) && File.exist?(nf)
+          backup(nf)
+          puts "backing up #{nf} to #{@backup_dir}"
+        end
+        system("ln -nsf #{af} #{nf}")
+      end
+    end
+  end
 end
 
-[["zsh", ".zsh"],
- ["zsh/zshcomp", ".zshcomp"],
- ["zsh/zshrc", ".zshrc"]
-].each do |fr, to|
-  fr = File.expand_path(fr)
-  puts "ln -nsf #{fr} #{to}"
-end
+df = DotFiler.new
+df.link_dots
+
+
