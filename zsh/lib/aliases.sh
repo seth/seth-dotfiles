@@ -1,6 +1,6 @@
 alias cd..='cd ..'
 alias sourcerc='. ~/.zshrc'
-alias grep="grep -E --color=auto"
+alias grep="grep --color=auto"
 [[ "$EMACS" == "t" ]] && alias ls='/bin/ls -F' || alias ls='/usr/local/bin/gls -F --color'
 alias ll='ls -l'
 alias lld='ll --directory'
