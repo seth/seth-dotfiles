@@ -19,7 +19,10 @@ path=(
     $EMACS_BIN
     $path
 )
-     
+
+## rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 for f in ${HOME}/.zsh/lib/*; source $f
 
 cdpath=( . ~/oc ~/src ~/Notebook ~/Dropbox )
