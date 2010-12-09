@@ -4,7 +4,7 @@ require 'fileutils'
 
 class DotFiler
   def initialize
-    @dot_file_dir = File.dirname(__FILE__)
+    @dot_file_dir = File.expand_path(File.dirname(__FILE__))
     @backup_dir = ENV['HOME'] + "/dot-file-backups"
   end
 
@@ -24,6 +24,7 @@ class DotFiler
           backup(nf)
           puts "backing up #{nf} to #{@backup_dir}"
         end
+        puts "linking #{nf} => #{af}"
         system("ln -nsf #{af} #{nf}")
       end
     end
