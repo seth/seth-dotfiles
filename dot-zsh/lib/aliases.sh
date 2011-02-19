@@ -36,7 +36,7 @@ alias r2ci="R-2.10 CMD INSTALL"
 alias gls='git log opscode/master..'
 alias gfo='git fetch opscode'
 alias gsr='git svn rebase'
-alias gst='git status'
+alias gst='git status -sb'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 
