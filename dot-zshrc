@@ -84,3 +84,13 @@ precmd() {
 
 PROMPT='[%m] %2~: '
 RPROMPT="%(1v.%{$fg[yellow]%}%1v%f.)%{$reset_color%}"
+
+# keychain stuff for ssh agent
+/usr/local/bin/keychain -Q -q opscode-platform-20100217 \
+                              opscode-preprod-20101208 \
+                              sfalcon.priv \
+                              opscode_github_sf
+[[ -f ~/.keychain/$HOST-sh ]] && . "$HOME/.keychain/$HOST-sh"
+
+
+
