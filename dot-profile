@@ -27,4 +27,11 @@ knifeprod() {
   knife "$@" -c ~/opscode/environments/prod/.chef/knife.rb
 }
 
+# keychain stuff for ssh agent
+/usr/local/bin/keychain -Q -q opscode-platform-20100217 \
+                              opscode-preprod-20101208 \
+                              sfalcon.priv \
+                              opscode_github_sf
+[[ -f ~/.keychain/$HOST-sh ]] && . "$HOME/.keychain/$HOST-sh"
+
 [ -f ~/.bashrc ] && . ~/.bashrc
