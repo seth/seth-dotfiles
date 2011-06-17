@@ -13,6 +13,8 @@ path=(
     ~/bin
     /usr/local/bin
     /usr/local/sbin
+    /usr/local/share/python
+    /usr/local/Cellar/python/2.7.2/bin
     /usr/local/texlive/2007/bin/i386-darwin
     /usr/texbin
     ${JAVA_HOME}/bin
