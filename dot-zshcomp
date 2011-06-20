@@ -34,4 +34,4 @@ zstyle ':completion:*:man:*'      menu yes select
 autoload -Uz bashcompinit
 bashcompinit
 
-source "/usr/local/etc/bash_completion.d/git-completion.bash"
+##source "/usr/local/etc/bash_completion.d/git-completion.bash"

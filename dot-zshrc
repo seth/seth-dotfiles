@@ -67,7 +67,6 @@ autoload ${HOME}/.zsh/functions/*(:t)
 #--- load the completion stuff
 . ${HOME}/.zshcomp
 for f in ${HOME}/.zsh/bash_completion.d/*; source $f
-source /usr/local/etc/bash_completion.d/git-completion.bash
 
 #--- Fix for emacs key binding
 WORDCHARS=${WORDCHARS//[\/]}
