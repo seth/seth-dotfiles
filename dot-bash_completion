@@ -1,4 +1,4 @@
-for RPROG in R-2.11 R-2.12 R-devel; do
+for RPROG in R-2.13 R-2.12 R-2.14 R-devel; do
    complete -F _R -o filenames ${RPROG}
 done
 
