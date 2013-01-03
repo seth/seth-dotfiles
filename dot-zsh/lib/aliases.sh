@@ -40,3 +40,4 @@ alias gst='git status -sb'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 
+alias drite='dendrite'
