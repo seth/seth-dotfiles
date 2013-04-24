@@ -20,6 +20,7 @@ path=(
     /usr/texbin
     ${JAVA_HOME}/bin
     $EMACS_BIN
+    ~/oc/concrete
     $path
 )
 
@@ -27,6 +28,8 @@ path=(
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 for f in ${HOME}/.zsh/lib/*; source $f
+
+[[ -f $HOME/.local_env ]] && source $HOME/.local_env
 
 cdpath=( . ~/oc ~/src ~/Notebook ~/Dropbox )
 
