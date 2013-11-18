@@ -67,6 +67,8 @@ unsetopt beep nomatch
 fpath+=(
   ${HOME}/.zsh/functions
 )
+fpath+=/usr/local/share/zsh-completions
+
 export GEMDIR=$(gem environment | grep -A1 'GEM PATHS' | tail -1 | awk '{print $2}')
 autoload ${HOME}/.zsh/functions/*(:t)
 
