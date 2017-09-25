@@ -102,8 +102,9 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# this takes a long time to source?
+#export NVM_DIR=~/.nvm
+#source /usr/local/opt/nvm/nvm.sh
 
 # perl
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
