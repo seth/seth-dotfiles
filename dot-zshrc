@@ -1,106 +1,85 @@
-EMACS_INFO="/Applications/Emacs.app/Contents/Resources/info"
-EMACS_BIN="/Applications/Emacs.app/Contents/MacOS/bin"
-export INFOPATH=$EMACS_INFO:/usr/local/info:/usr/local/share/info:$INFOPATH
-export SVN_EDITOR=emacsclient
-export EDITOR='zile'
-export GPGKEY=C81B042D
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-# don't let tar, etc copy Finder specific junk.
-export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
-#export COPYFILE_DISABLE=true
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
-typeset -U path
-path=(
-    ~/bin
-    ~/.rbenv/bin
-    /usr/local/bin
-    /usr/local/sbin
-    /usr/local/share/python
-    /usr/local/Cellar/python/2.7.2/bin
-    /usr/local/texlive/2007/bin/i386-darwin
-    /usr/texbin
-    ${JAVA_HOME}/bin
-    $EMACS_BIN
-    ~/oc/concrete
-    $path
-)
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-# ## rvm
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-for f in ${HOME}/.zsh/lib/*; source $f
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-[[ -f $HOME/.local_env ]] && source $HOME/.local_env
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-cdpath=( . ~/oc ~/src ~/Notebook ~/Dropbox )
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-chpwd() {
-    [[ -t 1 ]] || return
-    case $TERM in
-      sun-cmd) print -Pn "\e]l%~\e\\"
-        ;;
-      *xterm*|rxvt|(dt|k|E)term) print -Pn "\e]2;%3~\a"
-        ;;
-    esac
-}
-chpwd
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-bindkey -e
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-zmodload -i zsh/complist
-bindkey -M menuselect '^o' accept-and-infer-next-history
-bindkey '^?' backward-delete-char
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 #
-#---
-
-
-#--- zsh options ---
-#
-setopt autopushd cdablevars autocd extendedglob histignorealldups 
-setopt appendhistory extendedhistory histsavenodups pushdignoredups
-setopt histfindnodups combiningchars
-unsetopt beep nomatch
-
-#--- Shell Functions ---
-#
-fpath+=(
-  ${HOME}/.zsh/functions
-)
-fpath+=/usr/local/share/zsh-completions
-
-export GEMDIR=$(gem environment | grep -A1 'GEM PATHS' | tail -1 | awk '{print $2}')
-autoload ${HOME}/.zsh/functions/*(:t)
-
-#--- load the completion stuff
-. ${HOME}/.zshcomp
-for f in ${HOME}/.zsh/bash_completion.d/*; source $f
-
-#--- Fix for emacs key binding
-WORDCHARS=${WORDCHARS//[\/]}
-
-#--- Git prompt setup
-autoload -Uz vcs_info
-
-autoload colors
-colors
-
-precmd() {
-  psvar=()
-  vcs_info
-  [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
-}
-
-PROMPT='[%m] %2~: '
-RPROMPT="%(1v.%{$fg[yellow]%}%1v%f.)%{$reset_color%}"
-
-# keychain stuff for ssh agent
-/usr/local/bin/keychain -Q -q opscode-platform-20100217 \
-                              opscode-preprod-20101208 \
-                              sfalcon \
-                              sf_github
-[[ -f ~/.keychain/$HOST-sh ]] && . "$HOME/.keychain/$HOST-sh"
-
-ulimit -n 1024
-
-eval "$(rbenv init -)"
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
