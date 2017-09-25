@@ -8,7 +8,7 @@ path=(
   ~/perl5/bin
   /usr/local/bin
   /usr/local/sbin
-  /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+  /Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin
   /usr/local/texlive/2015basic/bin/x86_64-darwin
   $JAVA_HOME
   $path
