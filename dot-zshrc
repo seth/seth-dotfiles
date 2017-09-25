@@ -145,3 +145,4 @@ if [ -f '/Users/seth/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/U
 if [ -f '/Users/seth/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/seth/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 # for some reason not getting directory ls colorization when this is set per default
+#unset LSCOLORS
