@@ -135,3 +135,9 @@ if [ -f '/Users/seth/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/U
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/seth/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/seth/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/seth/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/seth/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/seth/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/seth/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# for some reason not getting directory ls colorization when this is set per default
