@@ -109,7 +109,8 @@ fi
 # perl
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 
-export GOPATH=/Users/seth/go
+# Go
+export GOPATH=~/go
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -146,3 +147,11 @@ if [ -f '/Users/seth/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then sour
 
 # for some reason not getting directory ls colorization when this is set per default
 #unset LSCOLORS
+
+export cdpath=($GOPATH/src/github.com/chef)
+
+# docker helpers
+alias docker_down="docker-compose down --volumes --remove-orphans"
+alias docker_up="docker-compose up -d --force-recreate --remove-orphans"
+alias docker_up_fg="docker-compose up --force-recreate --remove-orphans"
+alias docker_pull="docker-compose pull --parallel"
