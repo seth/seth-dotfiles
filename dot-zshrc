@@ -155,3 +155,12 @@ alias docker_down="docker-compose down --volumes --remove-orphans"
 alias docker_up="docker-compose up -d --force-recreate --remove-orphans"
 alias docker_up_fg="docker-compose up --force-recreate --remove-orphans"
 alias docker_pull="docker-compose pull --parallel"
+
+
+alias docker_a2_down="docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes --remove-orphans"
+alias docker_a2_up="docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --force-recreate --remove-orphans"
+alias docker_a2_up_fg="docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --force-recreate --remove-orphans"
+alias docker_pull="docker-compose pull --parallel"
+
+# Let direnv do its thing.
+eval "$(direnv hook zsh)"
